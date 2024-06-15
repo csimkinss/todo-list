@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AddButton from "./components/AddButton";
+import ListItem from "./components/ListItem";
+import ListTotal from "./components/ListTotal";
+import CheckedItems from "./components/CheckedItems";
+
+import "./App.scss";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [list, setList] = useState(
+        JSON.parse(localStorage.getItem("list")) || [
+            { task: "do the washing up", isComplete: false },
+            { task: "sweep the floor", isComplete: false },
+            { task: "vacuum", isComplete: false },
+        ]
+    );
+
+    function handleStorage(newList) {
+        setList(newList);
+        localStorage.setItem("list", JSON.stringify(newList));
+    }
+
+    return (
+        <div className="App">
+            <ul className="list">
+                {list &&
+                    list.map((item, key) => (
+                        <ListItem
+                            key={key}
+                            index={key}
+                            list={list}
+                            setList={handleStorage}
+                            isComplete={item.isComplete}
+                        >
+                            {item.task}
+                        </ListItem>
+                    ))}
+            </ul>
+            <AddButton setList={handleStorage} list={list} />
+            <ListTotal list={list} />
+            <CheckedItems list={list} />
+        </div>
+    );
 }
 
 export default App;
