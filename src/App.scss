@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  background-color: #e3d5ca;
+  background-color: #f5e3e0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,14 +8,14 @@ body {
 
 .App {
   height: 100%;
-  background-color: #c2847a;
+  background-color: #e8b4bc;
   min-width: 55rem;
   margin: 0 auto;
   min-height: 10rem;
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  border-radius: 3rem;
+  border-radius: 1rem;
 }
 
 .list {
@@ -32,7 +32,7 @@ body {
   grid-template-columns: 1fr min-content min-content min-content;
   padding: 1rem;
   background-color: #fbfbff;
-  border-radius: 3rem;
+  border-radius: 1rem;
 
   &:last-of-type {
     margin-bottom: 1rem;
@@ -133,7 +133,7 @@ label {
 
 .tick-box:checked + .task {
   &:before {
-    background-color: pink;
+    background-color: #f7bad5;
   }
 
   &:after {
@@ -162,6 +162,7 @@ h4 {
   .list-item {
     .date {
       grid-column-start: 1;
+      margin-top: 0.25rem;
     }
     .remove-item {
       grid-row-start: 1;
@@ -169,6 +170,6 @@ h4 {
     }
   }
   .add-item {
-    max-width: 16rem;
+    max-width: 14rem;
   }
 }
