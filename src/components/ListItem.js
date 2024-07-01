@@ -22,8 +22,10 @@ const ListItem = (props) => {
                 <input className="tick-box" type="checkbox" defaultChecked={isComplete}/>
                 <span className="task">{props.children}</span>
             </label>
+            <div class="date">
             <span className="complete-by"><em>Complete by: </em></span>
             <input type="date" className="complete-date"></input>
+            </div>
             <button className="remove-item" onClick={handleDelete}>&times;</button>
         </li>
     );
